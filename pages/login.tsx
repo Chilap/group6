@@ -20,8 +20,7 @@ const LoginBlock = () => {
     ID: "",
     Year: null,
   });
-  //   const [result, setResult] = useState<string>("");
-  const { Programme, ID, Year } = input;
+  const { ID, Programme, Year } = input;
 
   function check() {
     for (const x in IDPW) {
@@ -40,30 +39,6 @@ const LoginBlock = () => {
       }
     }
   }
-
-  //   function popup() {
-  //     if (loggedin) {
-  //       {
-  //         console.log(loggedin);
-  //         return alert("OK");
-  //       }
-  //     } else {
-  //       {
-  //         console.log(loggedin);
-  //         return alert("Sorry, worng ID or password");
-  //       }
-  //     }
-  //   }
-
-  //   function checklogin() {
-  //     let checklogin = [];
-  //     checklogin.unshift(0);
-
-  //     if (loggedin) {
-  //       checklogin.unshift(1);
-  //       return checklogin[0];
-  //     }
-  //   }
   return (
     <div>
       {loggedin ? (
@@ -132,8 +107,5 @@ const LoginBlock = () => {
   );
 };
 
-// function logined() {
-//   return <div>Welcome!</div>;
-// }
 
 export default LoginBlock;

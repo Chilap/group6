@@ -1,5 +1,3 @@
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 import LoginBlock from "./login";
@@ -46,13 +44,12 @@ const Home: React.FC = function () {
       </div>
       {/* <div className='col-span-1'></div> */}
       <div className="col-span-5 p-4">
-        <h2 id="Share">Share Your Score</h2>
-        <h2 id="AMS">AMS</h2>
+        <h2 className="text-xl my-2 font-medium">Share Your Score</h2>
+
         <Demo />
 
-        <h2>COM</h2>
         <COM />
-        <h2>FLA</h2>
+
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
           luctus massa a felis dapibus semper. Vivamus justo nisl, viverra
