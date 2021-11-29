@@ -6,7 +6,8 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: rgb(211, 211, 211);
+    /* background-color: rgb(240, 240, 240); */
+    background-color: #eeeeee;
 
 
 }

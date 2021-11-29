@@ -68,9 +68,9 @@ const LoginBlock = () => {
     <div>
       {loggedin ? (
         <div>
-          <p>Hello</p>
+          <p>Welcome!</p>
           <button
-            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2"
+            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-white hover:shadow-xl transition duration-200"
             onClick={() => setLogin(false)}
           >
             Logout
@@ -85,7 +85,7 @@ const LoginBlock = () => {
               onChange={(x) => setInput({ ...input, ID: x.target.value })}
               type="text"
               required
-              // className = 'bg-transparent'
+              className="w-5/6 border rounded-md p-1 my-2"
             />
           </p>
           <p>
@@ -97,6 +97,7 @@ const LoginBlock = () => {
               }
               type="text"
               required
+              className="w-5/6 border rounded-md p-1 my-2"
             />
           </p>
           <p>
@@ -110,11 +111,12 @@ const LoginBlock = () => {
               type="number"
               min="1"
               max="5"
+              className="w-5/6 border rounded-md p-1 my-2"
             />
           </p>
           <p>
             <button
-              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2"
+              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-white hover:shadow-xl transition duration-200"
               type="submit"
               onClick={() => {
                 check();
@@ -130,8 +132,8 @@ const LoginBlock = () => {
   );
 };
 
-function logined() {
-  return <div>Welcome!</div>;
-}
+// function logined() {
+//   return <div>Welcome!</div>;
+// }
 
 export default LoginBlock;
