@@ -185,6 +185,7 @@ const LoginBlock = () => {
         <p className='font-semibold text-lg text-gray-500'>Login tips:</p>
         <p>- Students <span className='font-bold'>cannot</span> download XML, only doctors can. </p>
         <hr/>
+        <p className='font-semibold text-lg text-gray-500'>Login Credentials:</p>
         <p className='font-light text-sm text-gray-300'>(ID // programme // year)</p>
         <p>student: s198096 // DSBI // 2019</p>
         <p>doctor: doctor // doctor // 2019</p>
