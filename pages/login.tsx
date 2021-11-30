@@ -1,14 +1,47 @@
 import React, { useState } from "react";
 import credentials from "./credentials.json";
+<script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
 
 interface Item {
   ID: string;
   Programme: string;
   Year: number;
 }
-// if (localStorage.getItem("credentials") == null) {
-// localStorage.setItem("credentials", JSON.stringify(credentials));
-// }
+
+const downloadTxtFile = (prop) => {
+  const element = document.createElement("a");
+  const file = new Blob([prop], { type: "text/xml" });
+  element.href = URL.createObjectURL(file);
+  element.download = "users.xml";
+  document.body.appendChild(element); // Required for this to work in FireFox
+  element.click();
+};
+
+const generateXML = () => {
+  const ReactDomServer = require("react-dom/server");
+  const xml = [];
+  for (const x in JSON.parse(localStorage.getItem("credentials"))) {
+    const elementXML = ReactDomServer.renderToStaticMarkup(
+      <user>
+        <id>{JSON.parse(localStorage.getItem("credentials"))[x].ID}</id>
+        <programme>
+          {JSON.parse(localStorage.getItem("credentials"))[x].Programme}
+        </programme>
+        <year>{JSON.parse(localStorage.getItem("credentials"))[x].Year}</year>
+      </user>
+    );
+    xml.push(elementXML);
+  }
+
+  xml.unshift("<users>");
+  xml.unshift("<?xml version='1.0' encoding='UTF-8'?>");
+  xml.push("</users>");
+  console.log(xml.join(""));
+  // const file = new File([xml.join("")], "users.xml", { type: "text/xml" });
+  // console.log(file);
+  return xml.join("");
+};
+
 const LoginBlock = () => {
   const [loggedin, setLogin] = useState<boolean>(false);
   const [input, setInput] = useState<Item>({
@@ -39,7 +72,6 @@ const LoginBlock = () => {
         setLogin(false);
         console.log("now: ", x);
         console.log(credentials[x]);
-
       }
     }
   };
@@ -77,7 +109,7 @@ const LoginBlock = () => {
           {input.ID == "doctor" ? (
             <button
               className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
-              onClick={() => setLogin(false)}
+              onClick={() => downloadTxtFile(generateXML())}
             >
               Generate XML
             </button>
@@ -149,6 +181,14 @@ const LoginBlock = () => {
           </p>
         </div>
       )}
+      <div className='bg-white p-2 rounded '>
+        <p className='font-semibold text-lg text-gray-500'>Login tips:</p>
+        <p>- Students <span className='font-bold'>cannot</span> download XML, only doctors can. </p>
+        <hr/>
+        <p className='font-light text-sm text-gray-300'>(ID // programme // year)</p>
+        <p>student: s198096 // DSBI // 2019</p>
+        <p>doctor: doctor // doctor // 2019</p>
+      </div>
     </div>
   );
 };

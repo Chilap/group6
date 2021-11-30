@@ -4,6 +4,7 @@ import LoginBlock from "./login";
 import Exercise from "./test";
 import COM from "./COM";
 import Demo from "./test2";
+<script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const Home: React.FC = function () {
   return (
