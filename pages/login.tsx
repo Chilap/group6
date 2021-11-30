@@ -1,33 +1,28 @@
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
+import credentials from "./credentials.json";
 
 interface Item {
-  Programme: string;
   ID: string;
+  Programme: string;
   Year: number;
 }
-
-const IDPW: Item[] = [
-  { ID: "a", Programme: "a", Year: 1 },
-  { ID: "z", Programme: "AHCC", Year: 1 },
-  { ID: "a", Programme: "DSBI", Year: 1 },
-];
 
 const LoginBlock = () => {
   const [loggedin, setLogin] = useState<boolean>(false);
   const [input, setInput] = useState<Item>({
-    Programme: "",
     ID: "",
+    Programme: "",
     Year: null,
   });
   const { ID, Programme, Year } = input;
 
-  function check() {
-    for (const x in IDPW) {
+  const check = () => {
+    for (const x in credentials) {
       if (
-        ID == IDPW[x].ID &&
-        Programme == IDPW[x].Programme &&
-        Year == IDPW[x].Year
+        ID == credentials[x].ID &&
+        Programme == credentials[x].Programme &&
+        Year == credentials[x].Year
       ) {
         setLogin(true);
         console.log(loggedin);
@@ -38,7 +33,7 @@ const LoginBlock = () => {
         return false;
       }
     }
-  }
+  };
   return (
     <div>
       {loggedin ? (
@@ -59,6 +54,7 @@ const LoginBlock = () => {
               value={ID}
               onChange={(x) => setInput({ ...input, ID: x.target.value })}
               type="text"
+              placeholder="a"
               required
               className="w-5/6 border rounded-md p-1"
             />
@@ -71,6 +67,7 @@ const LoginBlock = () => {
                 setInput({ ...input, Programme: x.target.value })
               }
               type="text"
+              placeholder="z"
               required
               className="w-5/6 border rounded-md p-1"
             />
@@ -80,6 +77,7 @@ const LoginBlock = () => {
             <br />
             <input
               value={Year}
+              placeholder="1"
               onChange={(x) =>
                 setInput({ ...input, Year: parseInt(x.target.value) })
               }
@@ -106,6 +104,5 @@ const LoginBlock = () => {
     </div>
   );
 };
-
 
 export default LoginBlock;
