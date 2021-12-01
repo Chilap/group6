@@ -75,25 +75,27 @@ const LoginBlock = () => {
       }
     }
   };
-
-  const register = () => {
-    if (localStorage.getItem("credentials") == null) {
-      if (input.ID[0] != "s" && input.ID.length != 7){
-        alert("Invalid student ID");
-        return;
-      } else {
-        localStorage.setItem("credentials", JSON.stringify(credentials))
-      }      
+  const registercheck = () => {
+    if (input.ID[0] != "s" && input.ID.length != 7){
+      alert("Invalid student ID");
+      return false;
+    } else {
+      alert("Successfully registered");
+      register();
     }
-    for (const x in JSON.parse(localStorage.getItem("credentials"))) {
-      if (input.ID == JSON.parse(localStorage.getItem("credentials"))[x].ID) {
-        alert("ID already exists");
-        return;
+  }
+  const  register = ()=> {
+    if (registercheck() == true){
+      if (localStorage.getItem("credentials") == null) {
+        localStorage.setItem("credentials", JSON.stringify(credentials));
+      }      
+      for (const x in JSON.parse(localStorage.getItem("credentials"))) {
+        if (input.ID == JSON.parse(localStorage.getItem("credentials"))[x].ID) {
+          alert("ID already exists");
+          return;
+        }
       }
     }
-
- 
-    
 
     const ls = JSON.parse(localStorage.getItem("credentials"));
     ls.push(input);
@@ -182,7 +184,7 @@ const LoginBlock = () => {
               className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
               type="submit"
               onClick={() => {
-                register();
+                registercheck()
               }}
             >
               Register{" "}
