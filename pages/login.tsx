@@ -78,7 +78,12 @@ const LoginBlock = () => {
 
   const register = () => {
     if (localStorage.getItem("credentials") == null) {
-      localStorage.setItem("credentials", JSON.stringify(credentials));
+      if (input.ID[0] != "s" && input.ID.length != 7){
+        alert("Invalid student ID");
+        return;
+      } else {
+        localStorage.setItem("credentials", JSON.stringify(credentials))
+      }      
     }
     for (const x in JSON.parse(localStorage.getItem("credentials"))) {
       if (input.ID == JSON.parse(localStorage.getItem("credentials"))[x].ID) {
@@ -86,10 +91,8 @@ const LoginBlock = () => {
         return;
       }
     }
-    if (input.ID[0] !== "s" && input.ID.length != 7){
-        alert("Invalid Student ID");
-        return;
-    }
+
+ 
     
 
     const ls = JSON.parse(localStorage.getItem("credentials"));
