@@ -86,7 +86,7 @@ const LoginBlock = () => {
         return;
       }
     }
-    if (input.ID[0] !== "s" && input.ID.length > 7){
+    if (input.ID[0] !== "s" && input.ID.length != 7){
         alert("Invalid Student ID");
         return;
     }
