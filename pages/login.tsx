@@ -86,6 +86,13 @@ const LoginBlock = () => {
         return;
       }
     }
+    for (const x in input){
+        if (input.ID[0] != "s" && input.ID.length > 7){
+          alert("Invalid Student ID");
+          return;
+      }
+    }
+
     const ls = JSON.parse(localStorage.getItem("credentials"));
     ls.push(input);
     localStorage.setItem("credentials", JSON.stringify(ls));
