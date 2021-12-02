@@ -75,26 +75,21 @@ const LoginBlock = () => {
       }
     }
   };
-  const registercheck = () => {
-    if (input.ID[0] != "s" && input.ID.length != 7){
-      alert("Invalid student ID");
-      return false;
-    } else {
-      alert("Successfully registered");
-      register();
-    }
-  }
-  const  register = ()=> {
-    if (registercheck() == true){
+  
+  const register = () => {
+    if (input.ID[0] == "s" && input.ID.length == 7) {
       if (localStorage.getItem("credentials") == null) {
         localStorage.setItem("credentials", JSON.stringify(credentials));
-      }      
+      }
       for (const x in JSON.parse(localStorage.getItem("credentials"))) {
         if (input.ID == JSON.parse(localStorage.getItem("credentials"))[x].ID) {
           alert("ID already exists");
           return;
         }
       }
+      alert("successfully registered");
+    } else {
+      alert("Invalid student ID");
     }
 
     const ls = JSON.parse(localStorage.getItem("credentials"));
@@ -184,7 +179,8 @@ const LoginBlock = () => {
               className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
               type="submit"
               onClick={() => {
-                registercheck()
+                register();
+                // registercheck()
               }}
             >
               Register{" "}
@@ -192,12 +188,19 @@ const LoginBlock = () => {
           </p>
         </div>
       )}
-      <div className='bg-white p-2 rounded '>
-        <p className='font-semibold text-lg text-gray-500'>Login tips:</p>
-        <p>- Students <span className='font-bold'>cannot</span> download XML, only doctors can. </p>
-        <hr/>
-        <p className='font-semibold text-lg text-gray-500'>Login Credentials:</p>
-        <p className='font-light text-sm text-gray-300'>(ID // programme // year)</p>
+      <div className="bg-white p-2 rounded ">
+        <p className="font-semibold text-lg text-gray-500">Login tips:</p>
+        <p>
+          - Students <span className="font-bold">cannot</span> download XML,
+          only doctors can.{" "}
+        </p>
+        <hr />
+        <p className="font-semibold text-lg text-gray-500">
+          Login Credentials:
+        </p>
+        <p className="font-light text-sm text-gray-300">
+          (ID // programme // year)
+        </p>
         <p>student: s198096 // DSBI // 2019</p>
         <p>doctor: doctor // doctor // 2019</p>
       </div>
