@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import credentials from "./credentials.json";
-import test2 from "./test2";
+// import test2 from "./test2";
+import LoginState from "./index";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
 
 interface Item {
@@ -67,6 +68,7 @@ const LoginBlock = () => {
         Year == JSON.parse(localStorage.getItem("credentials"))[x].Year
       ) {
         setLogin(true);
+        // <LoginState className={true} />;
         return true;
       } else {
         setLogin(false);
@@ -105,7 +107,7 @@ const LoginBlock = () => {
         <div>
           <p>Welcome! {input.ID}</p>
           <button
-            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 md:mx-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
+            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 md:mx-0 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
             onClick={() => setLogin(false)}
           >
             Logout
@@ -164,7 +166,7 @@ const LoginBlock = () => {
           </p>
           <p>
             <button
-              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
+              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm md:mx-2 md:m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
               type="submit"
               onClick={() => {
                 check();
@@ -174,7 +176,7 @@ const LoginBlock = () => {
               Log in{" "}
             </button>
             <button
-              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
+              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 md:mt-0 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
               type="submit"
               onClick={() => {
                 register();

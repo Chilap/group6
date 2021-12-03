@@ -8,17 +8,17 @@ interface Item {
 }
 
 const GRADES = [
-  "A",
-  "A-",
-  "B+",
-  "B",
-  "B-",
-  "C+",
-  "C",
-  "C-",
-  "D+",
-  "D",
-  "F",
+  "A", // 10
+  "A-", // 9
+  "B+", // 8
+  "B", // 7
+  "B-", // 6
+  "C+", // 5
+  "C", // 4
+  "C-", // 3
+  "D+", // 2
+  "D", // 1
+  "F", // 0
 ] as const;
 type GradeType = typeof GRADES[number];
 
@@ -30,14 +30,18 @@ interface Grade {
 const COMdetail: Grade[] = [
   {
     Programme_code: "COM3102",
-    Grade: "A-",
-  },
-  {
-    Programme_code: "COM3103",
     Grade: "A",
   },
   {
+    Programme_code: "COM3103",
+    Grade: "B+",
+  },
+  {
     Programme_code: "COM2005",
+    Grade: "A",
+  },
+  {
+    Programme_code: "COM3104",
     Grade: "A",
   },
 ];
