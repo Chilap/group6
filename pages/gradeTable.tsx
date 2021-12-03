@@ -25,42 +25,27 @@ type GradeType = typeof GRADES[number];
 interface Grade {
   Programme_code: string;
   Grade: GradeType;
+  voted: number
 }
 
-const COMdetail: Grade[] = [
-  {
-    Programme_code: "COM3102",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3103",
-    Grade: "B+",
-  },
-  {
-    Programme_code: "COM2005",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3104",
-    Grade: "A",
-  },
-];
+const COMdetail: Grade[] = require('./grades.json');;
 
 // const grades = JSON.parse(localStorage.getItem("grades"))
 
 const Item: React.FC<{
   item: Grade;
 }> = function ({ item }) {
-  const { Programme_code, Grade } = item;
+  const { Programme_code, Grade,voted } = item;
   return (
     <tr className={styles.tr}>
       <td className={styles.td}>{Programme_code}</td>
       <td className={styles.td}> {Grade}</td>
+      <td className={styles.td}> {voted}</td>
     </tr>
   );
 };
 
-const GradeTable = () => {
+const GradeTable2 = () => {
   // console.log(grades)
   return (
     <div>
@@ -68,6 +53,7 @@ const GradeTable = () => {
         <tr className={styles.tr}>
           <th className={styles.th}>Programme Code</th>
           <th className={styles.th}>Grade</th>
+          <th className={styles.th}>Vote</th>
         </tr>
         {COMdetail.map((item) => (
           <Item key={item.Programme_code} item={item} />
@@ -77,4 +63,4 @@ const GradeTable = () => {
   );
 };
 
-export default GradeTable;
+export default GradeTable2;
