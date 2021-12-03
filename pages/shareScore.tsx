@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import grades from "./grades.json";
 
 type Item = {
-  course: string;
+  Programme_code: string;
   grade: string;
 };
 
@@ -17,7 +17,7 @@ const load = () => {
   }
 };
 const SubmitScore = () => {
-  const [data, setData] = useState<Item>({ course: "", grade: "" });
+  const [data, setData] = useState<Item>({ Programme_code: "", grade: "" });
   const [initiated, setInitiated] = useState<boolean>(false);
 
   function save() {
@@ -45,10 +45,10 @@ const SubmitScore = () => {
     <div>
       {initiated ? (
         <div>
-          Course Code:{" "}
+          Programme Code:{" "}
           <input
-            value={data.course}
-            onChange={(x) => setData({ ...data, course: x.target.value })}
+            value={data.Programme_code}
+            onChange={(x) => setData({ ...data, Programme_code: x.target.value })}
             className="inline-block mr-4"
           />
           {/* <br className="my-4"/> */}
@@ -66,7 +66,7 @@ const SubmitScore = () => {
             Save to local storage
           </button>
           <button
-            onClick={load}
+            onClick={initiate}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
             JSON → LocalStorage

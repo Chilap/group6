@@ -46,6 +46,8 @@ const COMdetail: Grade[] = [
   },
 ];
 
+// const grades = JSON.parse(localStorage.getItem("grades"))
+
 const Item: React.FC<{
   item: Grade;
 }> = function ({ item }) {
@@ -59,6 +61,7 @@ const Item: React.FC<{
 };
 
 const GradeTable = () => {
+  // console.log(grades)
   return (
     <div>
       <table className={styles.table}>
