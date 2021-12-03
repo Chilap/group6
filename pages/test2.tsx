@@ -1,11 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import grades from "./grades.json";
 
 type Item = {
   item: string;
   item2: string;
 };
-
-const Demo = () => {
+const load = () => {
+  if (localStorage.getItem("grades") == null) {
+    localStorage.setItem("grades", JSON.stringify(grades));
+  }
+}
+const SubmitScore = () => {
   const [data, setData] = useState<Item>({ item: "", item2: "" });
 
   function save() {
@@ -13,16 +18,16 @@ const Demo = () => {
     console.log("Data is saved");
   }
 
-  function load() {
-    const read = localStorage.getItem("data");
-    if (read) {
-      const obj = JSON.parse(read) as Item;
-      setData(obj);
-      console.log("Loading is done");
-    } else {
-      console.log("No data is found");
-    }
-  }
+  // function load() {
+  //   const read = localStorage.getItem("data");
+  //   if (read) {
+  //     const obj = JSON.parse(read) as Item;
+  //     setData(obj);
+  //     console.log("Loading is done");
+  //   } else {
+  //     console.log("No data is found");
+  //   }
+  // }
 
   function clear() {
     localStorage.removeItem("data");
@@ -31,14 +36,14 @@ const Demo = () => {
 
   return (
     <div>
-      Data 1:{" "}
+      Course Code:{" "}
       <input
         value={data.item}
         onChange={(x) => setData({ ...data, item: x.target.value })}
         className="inline-block mr-4"
       />
       {/* <br className="my-4"/> */}
-      Data 2:{" "}
+      Grade you've got:{" "}
       <input
         value={data.item2}
         onChange={(x) => setData({ ...data, item2: x.target.value })}
@@ -67,4 +72,4 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default SubmitScore;

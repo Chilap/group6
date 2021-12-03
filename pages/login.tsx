@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import credentials from "./credentials.json";
+import test2 from "./test2";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
 
 interface Item {
@@ -28,6 +29,7 @@ const generateXML = () => {
           {JSON.parse(localStorage.getItem("credentials"))[x].Programme}
         </programme>
         <year>{JSON.parse(localStorage.getItem("credentials"))[x].Year}</year>
+        {/* <time>{my_time}</time> */}
       </user>
     );
     xml.push(elementXML);
@@ -55,9 +57,9 @@ const LoginBlock = () => {
     if (localStorage.getItem("credentials") == null) {
       localStorage.setItem("credentials", JSON.stringify(credentials));
     }
+    // load();
     for (const x in JSON.parse(localStorage.getItem("credentials"))) {
       // console.log(JSON.parse(credentialsShorthand));
-      console.log("0:", JSON.parse(localStorage.getItem("credentials"))[0].ID);
       if (
         ID == JSON.parse(localStorage.getItem("credentials"))[x].ID &&
         Programme ==
@@ -65,17 +67,13 @@ const LoginBlock = () => {
         Year == JSON.parse(localStorage.getItem("credentials"))[x].Year
       ) {
         setLogin(true);
-        console.log(input);
-        console.log("hello");
         return true;
       } else {
         setLogin(false);
-        console.log("now: ", x);
-        console.log(credentials[x]);
       }
     }
   };
-  
+
   const register = () => {
     if (input.ID[0] == "s" && input.ID.length == 7) {
       if (localStorage.getItem("credentials") == null) {
@@ -107,14 +105,14 @@ const LoginBlock = () => {
         <div>
           <p>Welcome! {input.ID}</p>
           <button
-            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
+            className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 md:mx-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
             onClick={() => setLogin(false)}
           >
             Logout
           </button>
           {input.ID == "doctor" ? (
             <button
-              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
+              className="bg-blue-200 text-gray-600 inline-block rounded-md px-4 py-2 text-sm m-2 md:mt-0 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
               onClick={() => downloadTxtFile(generateXML())}
             >
               Generate XML

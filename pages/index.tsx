@@ -2,8 +2,8 @@ import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 import LoginBlock from "./login";
 import Exercise from "./test";
-import COM from "./COM";
-import Demo from "./test2";
+import SubmitScore from "./test2";
+import GradeTable from "./COM";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const Home: React.FC = function () {
@@ -23,7 +23,7 @@ const Home: React.FC = function () {
         </a>
 
         <a
-          href="#AMS"
+          href="#AMS" 
           className="block text-center bg-white p-2 my-2 border rounded-md hover:shadow-xl transistion duration-150"
         >
           AMS
@@ -47,9 +47,9 @@ const Home: React.FC = function () {
       <div className="col-span-5 p-4">
         <h2 className="text-xl my-2 font-medium">Share Your Score</h2>
 
-        <Demo />
+        <SubmitScore />
 
-        <COM />
+        <GradeTable />
 
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas

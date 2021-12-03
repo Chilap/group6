@@ -54,12 +54,12 @@ const Item: React.FC<{
   );
 };
 
-const COM = () => {
+const GradeTable = () => {
   return (
     <div>
       <table className={styles.table}>
         <tr className={styles.tr}>
-          <th className={styles.th}>Progremme Code</th>
+          <th className={styles.th}>Programme Code</th>
           <th className={styles.th}>Grade</th>
         </tr>
         {COMdetail.map((item) => (
@@ -70,4 +70,4 @@ const COM = () => {
   );
 };
 
-export default COM;
+export default GradeTable;
