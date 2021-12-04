@@ -11,6 +11,7 @@ const LoginState = (props) => {
   return <h2>{props.loggedinState}</h2>;
 };
 
+
 const Home: React.FC = function () {
   return (
     <div className="grid grid-cols-6 p-4">

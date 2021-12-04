@@ -1,26 +1,22 @@
 [
   {
     "Programme_code": "COM3102",
-    "averageScore": 123,
-
-    "voted": 13
+    "Grade": "B",
+    "voted": 9
   },
   {
     "Programme_code": "COM3103",
-    "averageScore": 13,
-
-    "voted": 13
+    "Grade": "B",
+    "voted": 26
   },
   {
     "Programme_code": "COM2005",
-    "averageScore": "13",
-
-    "voted": 13
+    "Grade": "B+",
+    "voted": 58
   },
   {
     "Programme_code": "COM3104",
-    "averageScore": 13,
-
-    "voted": 13
+    "Grade": "C",
+    "voted": 10
   }
 ]
