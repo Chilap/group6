@@ -19,26 +19,10 @@ type GradeType = typeof GRADES[number];
 interface Grade {
   Programme_code: string;
   Grade: GradeType;
+  voted: number
 }
 
-const COMdetail: Grade[] = [
-  {
-    Programme_code: "COM3102",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3103",
-    Grade: "B+",
-  },
-  {
-    Programme_code: "COM2005",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3104",
-    Grade: "A",
-  },
-];
+const COMdetail: Grade[] = require('./grades.json');;
 
 // const grades = JSON.parse(localStorage.getItem("grades"))
 

@@ -10,6 +10,7 @@ type Item = {
 interface Grade {
   Programme_code: string;
   Grade: GradeType;
+  voted: number;
 }
 
 const GRADES = [
@@ -26,24 +27,7 @@ const GRADES = [
   "F", // 0
 ] as const;
 type GradeType = typeof GRADES[number];
-const COMdetail: Grade[] = [
-  {
-    Programme_code: "COM3102",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3103",
-    Grade: "B+",
-  },
-  {
-    Programme_code: "COM2005",
-    Grade: "A",
-  },
-  {
-    Programme_code: "COM3104",
-    Grade: "A",
-  },
-];
+const COMdetail: Grade[] = require("./grades.json");
 const initiate = () => {
   if (localStorage.getItem("grades") == null) {
     localStorage.setItem("grades", JSON.stringify(grades));
@@ -81,11 +65,12 @@ const SubmitScore = () => {
   const Item: React.FC<{
     item: Grade;
   }> = function ({ item }) {
-    const { Programme_code, Grade } = item;
+    const { Programme_code, Grade, voted } = item;
     return (
       <tr className={styles.tr}>
         <td className={styles.td}>{Programme_code}</td>
         <td className={styles.td}> {Grade}</td>
+        <td className={styles.td}> {voted}</td>
       </tr>
     );
   };
