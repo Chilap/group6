@@ -272,7 +272,6 @@ const SubmitScore2 = () => {
             <option value="C-" >C-</option>
             <option value="D+" >D+</option>
             <option value="D" >D</option>
-            <option value="D-" >D-</option>
             <option value="F" >F</option>
           </select>
           <br />
