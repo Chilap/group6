@@ -59,8 +59,8 @@ const Modules = [
   'COM2005',
   'COM3104',
 ] as const;
-type module = typeof Modules[number];
-export const GradeDatabase: Record<module, string> = {
+type Modules = typeof Modules[number];
+export const GradeDatabase: Record<Modules, string> = {
   ['COM3102']:'B+',
   ['COM3103']:'B-',
   ['AMS1360']:'A-',
@@ -105,7 +105,7 @@ function calculate(x:string, z:string) {
       }
       return y;
   }
-  console.log(`The average grade of ${GradeDatabase[x]} is ${y}`)
+  console.log(`The average grade of ${x} is ${y}`)
 }
 const SubmitScore2 = () => {
   const [data, setData] = useState<Item>({ Programme_code: "", grade: "" });
