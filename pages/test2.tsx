@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import grades from "./grades.json";
 import styles from "../styles/Home.module.css";
+import { ListFormat } from "typescript";
 
 type Item = {
   Programme_code: string;
@@ -60,13 +61,22 @@ const Modules = [
   'COM3104',
 ] as const;
 type Modules = typeof Modules[number];
+type List = typeof Modules[number];
+export const ModuleList: Record<List, string> = {
+  ['COM3102']:'COM3102',
+  ['COM3103']:'COM3103',
+  ['AMS1360']:'AMS1360',
+  ['AMS2640']:'AMS2640',
+  ['COM2005']:'COM2005',
+  ['COM3104']:'COM3104'
+}
 export const GradeDatabase: Record<Modules, string> = {
   ['COM3102']:'B+',
   ['COM3103']:'B-',
   ['AMS1360']:'A-',
   ['AMS2640']:'B',
-  ['COM2005']: 'C+',
-  ['COM3104']: 'B'
+  ['COM2005']:'C+',
+  ['COM3104']:'B'
 }  
 export interface StudentTransscript {
   Programme: string; 
@@ -74,7 +84,7 @@ export interface StudentTransscript {
 }  
 
 function calculate(x:string, z:string) {
-  if (x === GradeDatabase[x]) {
+  if (x === ModuleList[x]) {
       let results = 0;
       let average = 0
       var y:string;
@@ -192,7 +202,7 @@ const SubmitScore2 = () => {
             Clear local storage
           </button>
           <button
-            onClick={calculate(data.Programme_code, data.grade)}
+            onClick={alert(`The average grade of ${data.Programme_code} is ${calculate(data.Programme_code, data.grade)}`)}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
             Calculate Average Grade
