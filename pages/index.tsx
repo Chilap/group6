@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import LoginBlock from "./login";
 // import Exercise from "./test";
 import SubmitScore from "./shareScore";
-// import Calculate from "./shareScore";
-import GradeTable from "./gradeTable";
+import GradeTable from "./Archive/gradeTable";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
 
 const LoginState = (props) => {
