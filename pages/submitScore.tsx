@@ -15,10 +15,10 @@ interface Grade {
 
 var COMdetail: Grade[] = require("./grades.json");
 
-var data
+var data;
 
 const initiate = () => {
-  if (localStorage.getItem("grades") == null || true) {
+  if (localStorage.getItem("grades") == null) {
     localStorage.setItem("grades", JSON.stringify(gradesjson));
   }
   JSON.parse(localStorage.getItem("grades")).forEach((element) => {
@@ -27,35 +27,39 @@ const initiate = () => {
       [element.avgGPAandVoted[0], element.avgGPAandVoted[1]].toString()
     );
   });
-  data = localStorage.getItem("grades")
+  data = localStorage.getItem("grades");
 
   // return localStorage.getItem("grades");
 };
 
 const save = (course: string, gpa) => {
-  // New GPA
-  const oldGPA = Number(localStorage.getItem(course).split(",")[0]);
-  const inputGPA = Number(gpa);
-  const votedCount = Number(localStorage.getItem(course).split(",")[1]);
-  const newGPA = (
-    (oldGPA * votedCount + inputGPA) /
-    (votedCount + 1)
-  ).toString();
-  if (localStorage.getItem(course) || true) {
-    // localStorage.setItem(course, localStorage.getItem(course) + grade)
-    localStorage.setItem(course, [newGPA, votedCount + 1].toString());
-  }
-  // New List
-  const grades = JSON.parse(localStorage.getItem("grades"));
-  grades.forEach((element) => {
-    if (element.Programme_code === course) {
-      element.avgGPAandVoted[0] = Number(newGPA);
-      element.avgGPAandVoted[1] = votedCount + 1;
+  if (localStorage.getItem(course)) {
+    // New GPA
+    const oldGPA = Number(localStorage.getItem(course).split(",")[0]);
+    const inputGPA = Number(gpa);
+    const votedCount = Number(localStorage.getItem(course).split(",")[1]);
+    const newGPA = (
+      (oldGPA * votedCount + inputGPA) /
+      (votedCount + 1)
+    ).toString();
+    if (localStorage.getItem(course) || true) {
+      // localStorage.setItem(course, localStorage.getItem(course) + grade)
+      localStorage.setItem(course, [newGPA, votedCount + 1].toString());
     }
-  });
-  console.log(JSON.stringify(grades));
-  localStorage.setItem("grades", JSON.stringify(grades));
-
+    // New List
+    const grades = JSON.parse(localStorage.getItem("grades"));
+    grades.forEach((element) => {
+      if (element.Programme_code === course) {
+        element.avgGPAandVoted[0] = Number(newGPA);
+        element.avgGPAandVoted[1] = votedCount + 1;
+      }
+    });
+    console.log(JSON.stringify(grades));
+    localStorage.setItem("grades", JSON.stringify(grades));
+  } else {
+    const value = [gpa, 1]
+    localStorage.setItem(course, value.toString())
+  }
 };
 
 // -------------------------------------------------
@@ -88,9 +92,9 @@ const SubmitScore = () => {
   const [details, setDetials] = useState<Grade[]>([...COMdetail]);
   return (
     <div>
-      <button className="border p-2 border-black" onClick={() => initiate()}>
+      {/* <button className="border p-2 border-black" onClick={() => initiate()}>
         reset{" "}
-      </button>
+      </button> */}
       {!initiated ? (
         <button
           className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
@@ -119,17 +123,17 @@ const SubmitScore = () => {
           />
           <br />
           <button
-            onClick={(e) => {
-              // e.preventDefault();
+            onClick={() => {
               save(input.Programme_code, input.gpa);
               COMdetail.forEach((element) => {
-                if (input.Programme_code == element.Programme_code){
-                  element.avgGPAandVoted[0] = Number(localStorage.getItem(element.Programme_code)[0])
-                  element.avgGPAandVoted[1] ++;
+                if (input.Programme_code == element.Programme_code) {
+                  element.avgGPAandVoted[0] = Number(
+                    localStorage.getItem(element.Programme_code)[0]
+                  );
+                  element.avgGPAandVoted[1]++;
                 }
-              })
-              setDetials([...COMdetail])
-              
+              });
+              setDetials([...COMdetail]);
             }}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >

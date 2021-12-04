@@ -131,7 +131,7 @@ const LoginBlock = () => {
               value={ID}
               onChange={(x) => setInput({ ...input, ID: x.target.value })}
               type="text"
-              placeholder="a"
+              placeholder="s198096"
               required
               className="w-5/6 border rounded-md p-1"
             />
@@ -144,7 +144,7 @@ const LoginBlock = () => {
                 setInput({ ...input, Programme: x.target.value })
               }
               type="text"
-              placeholder="z"
+              placeholder="DSBI"
               required
               className="w-5/6 border rounded-md p-1"
             />
