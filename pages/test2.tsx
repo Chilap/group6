@@ -153,6 +153,14 @@ const SubmitScore2 = () => {
       </tr>
     );
   };
+
+
+  function printans(){
+    return(alert(`The average grade of ${data.Programme_code} is ${calculate(data.Programme_code, data.grade)}`))
+
+
+
+  }
   return (
     <div>
       {!initiated ? (
@@ -202,7 +210,7 @@ const SubmitScore2 = () => {
             Clear local storage
           </button>
           <button
-            onClick={alert(`The average grade of ${data.Programme_code} is ${calculate(data.Programme_code, data.grade)}`)}
+            onClick={printans}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
             Calculate Average Grade
