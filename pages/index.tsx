@@ -26,33 +26,14 @@ const Home: React.FC = function () {
           href="#Share"
           className="block text-center bg-white p-2 my-2 border rounded-md hover:shadow-xl transistion duration-150"
         >
-          Share Your Score
+          Input Your Score
         </a>
 
-        <a
-          href="#AMS"
-          className="block text-center bg-white p-2 my-2 border rounded-md hover:shadow-xl transistion duration-150"
-        >
-          AMS
-        </a>
 
-        <a
-          href="#COM"
-          className="block text-center bg-white p-2 my-2 border rounded-md hover:shadow-xl transistion duration-150"
-        >
-          COM
-        </a>
-
-        <a
-          href="#FLA"
-          className="block text-center bg-white p-2 my-2 border rounded-md hover:shadow-xl transistion duration-150"
-        >
-          FLA
-        </a>
       </div>
       {/* <div className='col-span-1'></div> */}
       <div className="col-span-5 p-4">
-        <h2 className="text-xl my-2 font-medium">Share Your Score</h2>
+        <h2 className="text-xl my-2 font-medium">Input Your Score</h2>
 
         {/* <SubmitScore /> */}
         <SubmitScore2 />

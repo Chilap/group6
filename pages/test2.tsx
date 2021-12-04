@@ -55,8 +55,6 @@ export const GradeToGPA: Record<GradeType, number> = {
 const Modules = [
   'COM3102',
   'COM3103',
-  'AMS1360',
-  'AMS2640',
   'COM2005',
   'COM3104',
 ] as const;
@@ -65,18 +63,14 @@ type List = typeof Modules[number];
 export const ModuleList: Record<List, string> = {
   ['COM3102']:'COM3102',
   ['COM3103']:'COM3103',
-  ['AMS1360']:'AMS1360',
-  ['AMS2640']:'AMS2640',
   ['COM2005']:'COM2005',
   ['COM3104']:'COM3104'
 }
 export const GradeDatabase: Record<Modules, string> = {
-  ['COM3102']:'B+',
-  ['COM3103']:'B-',
-  ['AMS1360']:'A-',
-  ['AMS2640']:'B',
-  ['COM2005']:'C+',
-  ['COM3104']:'B'
+  ['COM3102']:'B',
+  ['COM3103']:'B',
+  ['COM2005']:'B',
+  ['COM3104']:'A'
 }  
 export interface StudentTransscript {
   Programme: string; 
@@ -184,31 +178,16 @@ const SubmitScore2 = () => {
             className="inline-block mr-4"
           />
           {/* <br className="my-4"/> */}
-          Grade you've got:{" "}
+          Grade :{" "}
           <input
             value={data.grade}
             onChange={(x) => setData({ ...data, grade: x.target.value })}
             className="inline-block"
           />
           <br />
-          <button
-            onClick={save}
-            className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
-          >
-            Save to local storage
-          </button>
-          <button
-            onClick={initiate}
-            className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
-          >
-            JSON → LocalStorage
-          </button>
-          <button
-            onClick={clear}
-            className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
-          >
-            Clear local storage
-          </button>
+ 
+
+
           <button
             onClick={printans}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
