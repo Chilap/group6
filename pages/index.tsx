@@ -2,14 +2,11 @@ import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 import LoginBlock from "./login";
 import SubmitScore2 from "./test2";
-import SubmitScore from "./shareScore";
+import SubmitScore from "./submitScore";
 import GradeTable from "./Archive/gradeTable";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
 
-const LoginState = (props) => {
-  console.log('pp', props.loggedinState)
-  return <h2>{props.loggedinState}</h2>;
-};
+
 
 
 const Home: React.FC = function () {
@@ -20,7 +17,6 @@ const Home: React.FC = function () {
           className={styles.img}
           src="https://www.hsu.edu.hk/wp-content/uploads/2018/11/20181031_Logo_HSU_262x90px.png"
         ></img>
-        <LoginState/>
         <LoginBlock />
         <p></p>
         <a
@@ -29,8 +25,6 @@ const Home: React.FC = function () {
         >
           Input Your Score
         </a>
-
-
       </div>
       {/* <div className='col-span-1'></div> */}
       <div className="col-span-5 p-4">
