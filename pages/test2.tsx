@@ -38,7 +38,7 @@ const load = () => {
     localStorage.setItem("grades", JSON.stringify(grades));
   }
 };
-const SubmitScore = () => {
+const SubmitScore2 = () => {
   const [data, setData] = useState<Item>({ Programme_code: "", grade: "" });
   const [initiated, setInitiated] = useState<boolean>(false);
 
@@ -138,4 +138,4 @@ const SubmitScore = () => {
   );
 };
 
-export default SubmitScore;
+export default SubmitScore2;

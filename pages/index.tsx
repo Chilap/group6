@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 import LoginBlock from "./login";
-import ShareScore2 from "./test2";
+import SubmitScore2 from "./test2";
 import SubmitScore from "./shareScore";
 import GradeTable from "./Archive/gradeTable";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
@@ -54,7 +54,8 @@ const Home: React.FC = function () {
       <div className="col-span-5 p-4">
         <h2 className="text-xl my-2 font-medium">Share Your Score</h2>
 
-        <SubmitScore />
+        {/* <SubmitScore /> */}
+        <SubmitScore2 />
         {/* <GradeTable /> */}
       </div>
     </div>
