@@ -194,7 +194,9 @@ const SubmitScore2 = () => {
           <button
             onClick={calculate(data.Programme_code, data.grade)}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
-          ></button>
+          >
+            Calculate Average Grade
+          </button>
           <table className={styles.table}>
             <tr className={styles.tr}>
               <th className={styles.th}>Programme Code</th>
