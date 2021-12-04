@@ -69,8 +69,8 @@ export const ModuleList: Record<List, string> = {
 export const GradeDatabase: Record<Modules, string> = {
   ['COM3102']:'B',
   ['COM3103']:'B',
-  ['COM2005']:'B',
-  ['COM3104']:'A'
+  ['COM2005']:'B+',
+  ['COM3104']:'C'
 }  
 export interface StudentTransscript {
   Programme: string; 
