@@ -126,6 +126,7 @@ const SubmitScore = () => {
             <tr className={styles.tr}>
               <th className={styles.th}>Programme Code</th>
               <th className={styles.th}>Grade</th>
+              <th className={styles.th}>Vote Count</th>
             </tr>
             {COMdetail.map((item) => (
               <Item key={item.Programme_code} item={item} />

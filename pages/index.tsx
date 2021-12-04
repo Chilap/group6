@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 import LoginBlock from "./login";
-// import Exercise from "./test";
+import ShareScore2 from "./test2";
 import SubmitScore from "./shareScore";
 import GradeTable from "./Archive/gradeTable";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>;
