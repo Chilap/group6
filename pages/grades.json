@@ -1,26 +1,20 @@
 [
   {
     "Programme_code": "COM3102",
-    "averageScore": 123,
-
-    "voted": 13
+    "avgGPAandVoted": [4, 1]
   },
   {
     "Programme_code": "COM3103",
-    "averageScore": 13,
-
-    "voted": 13
+    "avgGPAandVoted": [3.2, 1]
   },
   {
     "Programme_code": "COM2005",
-    "averageScore": "13",
+    "avgGPAandVoted": [3, 1]
 
-    "voted": 13
   },
   {
     "Programme_code": "COM3104",
-    "averageScore": 13,
+    "avgGPAandVoted": [1, 1]
 
-    "voted": 13
   }
 ]
