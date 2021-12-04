@@ -67,7 +67,6 @@ function calculate(x:string) {
         return average;
     }
 
-  
   return (
     <div>
       {initiated ? (

@@ -1,12 +1,6 @@
 import styles from "../styles/Home.module.css";
 import React, { useState } from "react";
 
-interface Item {
-  Programme: string;
-  ID: string;
-  Year: number;
-}
-
 const GRADES = [
   "A", // 10
   "A-", // 9
@@ -25,27 +19,42 @@ type GradeType = typeof GRADES[number];
 interface Grade {
   Programme_code: string;
   Grade: GradeType;
-  voted: number
 }
 
-const COMdetail: Grade[] = require('./grades.json');;
+const COMdetail: Grade[] = [
+  {
+    Programme_code: "COM3102",
+    Grade: "A",
+  },
+  {
+    Programme_code: "COM3103",
+    Grade: "B+",
+  },
+  {
+    Programme_code: "COM2005",
+    Grade: "A",
+  },
+  {
+    Programme_code: "COM3104",
+    Grade: "A",
+  },
+];
 
 // const grades = JSON.parse(localStorage.getItem("grades"))
 
 const Item: React.FC<{
   item: Grade;
 }> = function ({ item }) {
-  const { Programme_code, Grade,voted } = item;
+  const { Programme_code, Grade } = item;
   return (
     <tr className={styles.tr}>
       <td className={styles.td}>{Programme_code}</td>
       <td className={styles.td}> {Grade}</td>
-      <td className={styles.td}> {voted}</td>
     </tr>
   );
 };
 
-const GradeTable2 = () => {
+const GradeTable = () => {
   // console.log(grades)
   return (
     <div>
@@ -53,7 +62,6 @@ const GradeTable2 = () => {
         <tr className={styles.tr}>
           <th className={styles.th}>Programme Code</th>
           <th className={styles.th}>Grade</th>
-          <th className={styles.th}>Vote</th>
         </tr>
         {COMdetail.map((item) => (
           <Item key={item.Programme_code} item={item} />
@@ -63,4 +71,4 @@ const GradeTable2 = () => {
   );
 };
 
-export default GradeTable2;
+export default GradeTable;
