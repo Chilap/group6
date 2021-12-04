@@ -64,8 +64,9 @@ const save = (course: string, gpa) => {
       element.avgGPAandVoted[1] = votedCount+1;
     }
   });
-  console.log(grades)
-  // localStorage.setItem("grades", grades.toString())
+  console.log(JSON.stringify(grades))
+  // localStorage.setItem("grades", grades)
+  localStorage.setItem("grades", JSON.stringify(grades))
   // const oScore = localStorage.getItem(course);
 };
 
@@ -108,7 +109,7 @@ const SubmitScore = () => {
   };
   return (
     <div>
-      <button onClick={() => initiate()}>hello </button>
+      <button className="border p-2 border-black"onClick={() => initiate()}>reset </button>
       {!initiated ? (
         <button
           className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
