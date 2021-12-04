@@ -179,11 +179,26 @@ const SubmitScore2 = () => {
           />
           {/* <br className="my-4"/> */}
           Grade :{" "}
-          <input
+          <select
             value={data.grade}
             onChange={(x) => setData({ ...data, grade: x.target.value })}
             className="inline-block"
-          />
+          >
+            
+            <option value="" >please input your grade</option>
+            <option value="A" >A</option>
+            <option value="A-" >A-</option>
+            <option value="B+" >B+</option>
+            <option value="B" >B</option>
+            <option value="B-" >B-</option>
+            <option value="C+" >C+</option>
+            <option value="C" >C</option>
+            <option value="C-" >C-</option>
+            <option value="D+" >D+</option>
+            <option value="D" >D</option>
+            <option value="D-" >D-</option>
+            <option value="F" >F</option>
+          </select>
           <br />
  
 
