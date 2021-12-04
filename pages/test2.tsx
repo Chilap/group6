@@ -53,24 +53,96 @@ export const GradeToGPA: Record<GradeType, number> = {
   ['F']: 0,
 }
 const Modules = [
+  'AMS1001',
+  'AMS1301',
+  'AMS1302',
+  'AMS1360',
+  'AMS2640',
+  'AMS2002',
+  'AMS3323',
+  'AMS2320',
+  'AMS3301',
+  'AMS4322',
+  'CHN1000',
+  'CHN1002',
+  'ENG1010',
+  'ENG2010',
+  'COM2005',
+  'COM2007',
   'COM3102',
   'COM3103',
-  'COM2005',
   'COM3104',
+  'ACY2001',
+  'ECO1000',
+  'MGT1002',
+  'BUS2001',
+  'AIN1320',
+  'FIN2001',
+  'GEN1000',
+  'SCM2202',
 ] as const;
 type Modules = typeof Modules[number];
 type List = typeof Modules[number];
 export const ModuleList: Record<List, string> = {
+  ['AMS1001']:'AMS1001',
+  ['AMS1301']:'AMS1301',
+  ['AMS1302']:'AMS1302',
+  ['AMS1360']:'AMS1360',
+  ['AMS2640']:'AMS2640',
+  ['AMS2002']:'AMS2002',
+  ['AMS3323']:'AMS3323',
+  ['AMS2320']:'AMS2320',
+  ['AMS3301']:'AMS3301',
+  ['AMS4322']:'AMS4322',
+  ['CHN1000']:'CHN1000',
+  ['CHN1002']:'CHN1002',
+  ['ENG1010']:'ENG1010',
+  ['ENG2010']:'ENG2010',
+  ['COM2007']:'COM2007',
   ['COM3102']:'COM3102',
   ['COM3103']:'COM3103',
   ['COM2005']:'COM2005',
-  ['COM3104']:'COM3104'
+  ['COM3104']:'COM3104',
+  ['ACY2001']:'ACY2001',
+  ['ECO1000']:'ECO1000',
+  ['MGT1002']:'MGT1002',
+  ['BUS2001']:'BUS2001',
+  ['AIN1320']:'AIN1320',
+  ['FIN2001']:'FIN2001',
+  ['GEN1000']:'GEN1000',
+  ['SCM2202']:'SCM2202',
+  
 }
 export const GradeDatabase: Record<Modules, string> = {
+  ['AMS1001']:'B+',
+  ['AMS1301']:'B+',
+  ['AMS1302']:'B+',
+  ['AMS1360']:'A-',
+  ['AMS2640']:'B',
+  ['AMS2002']:'B+',
+  ['AMS3323']:'B',
+  ['AMS2320']:'B+',
+  ['AMS3301']:'B-',
+  ['AMS4322']:'B-',
+  ['CHN1000']:'C',
+  ['CHN1002']:'B-',
+  ['ENG1010']:'B',
+  ['ENG2010']:'B-',
+  ['COM2007']:'B+',
   ['COM3102']:'B',
   ['COM3103']:'B',
   ['COM2005']:'B+',
-  ['COM3104']:'C'
+  ['COM3104']:'C',
+  ['ACY2001']:'B+',
+  ['ECO1000']:'B',
+  ['MGT1002']:'B+',
+  ['BUS2001']:'B',
+  ['AIN1320']:'A-',
+  ['FIN2001']:'B',
+  ['GEN1000']:'B-',
+  ['SCM2202']:'B+',
+  
+  
 }  
 export interface StudentTransscript {
   Programme: string; 
@@ -150,8 +222,12 @@ const SubmitScore2 = () => {
 
 
   function printans(){
-    return(alert(`The average grade of ${data.Programme_code} is ${calculate(data.Programme_code, data.grade)}`))
-
+    if (data.Programme_code.length === 7){
+      return(alert(`The average grade of ${data.Programme_code} is ${calculate(data.Programme_code, data.grade)}.`))
+    } else {
+      return(alert('Incorrect Programme code.'))
+    }
+    
 
 
   }
