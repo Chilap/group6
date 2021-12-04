@@ -29,9 +29,12 @@ const GRADES = [
 type GradeType = typeof GRADES[number];
 const COMdetail: Grade[] = require("./grades.json");
 const initiate = () => {
-  if (localStorage.getItem("grades") == null) {
+  if (localStorage.getItem("grades") == null || true) {
     localStorage.setItem("grades", JSON.stringify(grades));
   }
+  JSON.parse(localStorage.getItem("grades")).forEach(element => {
+    localStorage.setItem(element.Programme_code, element.averageScore)
+  });
 };
 const load = () => {
   if (localStorage.getItem("grades") == null) {
@@ -42,9 +45,19 @@ const SubmitScore = () => {
   const [data, setData] = useState<Item>({ Programme_code: "", grade: "" });
   const [initiated, setInitiated] = useState<boolean>(false);
 
-  function save() {
-    localStorage.setItem("data", JSON.stringify(data));
-    console.log("Data is saved", data);
+  function save(course:string, grade) {
+    const oScore = Number(localStorage.getItem(course))
+    const nScore = Number(grade)
+    const newGrade = (oScore + nScore).toString()
+    if (localStorage.getItem(course) || true) {
+      // localStorage.setItem(course, localStorage.getItem(course) + grade)
+      localStorage.setItem(course, newGrade)
+      console.log(typeof newGrade)
+    }
+    console.log('out if ')
+    // localStorage.setItem("data", JSON.stringify(data));
+    // console.log("Data is saved", data);
+    // localStorage.setItem(course, localStorage.getItem(course) + grade)
   }
 
   // function load() {
@@ -91,13 +104,14 @@ const SubmitScore = () => {
           Programme Code:{" "}
           <input
             value={data.Programme_code}
+
             onChange={(x) =>
               setData({ ...data, Programme_code: x.target.value })
             }
             className="inline-block mr-4"
           />
           {/* <br className="my-4"/> */}
-          Grade you've got:{" "}
+          Grade:{" "}
           <input
             value={data.grade}
             onChange={(x) => setData({ ...data, grade: x.target.value })}
@@ -105,12 +119,12 @@ const SubmitScore = () => {
           />
           <br />
           <button
-            onClick={save}
+            onClick={() => {save(data.Programme_code, data.grade)}}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
-            Save to local storage
+            Calculate Average Score
           </button>
-          <button
+          {/* <button
             onClick={initiate}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
@@ -121,7 +135,7 @@ const SubmitScore = () => {
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
             Clear local storage
-          </button>
+          </button> */}
           <table className={styles.table}>
             <tr className={styles.tr}>
               <th className={styles.th}>Programme Code</th>

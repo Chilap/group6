@@ -35,8 +35,8 @@ const Home: React.FC = function () {
       <div className="col-span-5 p-4">
         <h2 className="text-xl my-2 font-medium">Input Your Score</h2>
 
-        {/* <SubmitScore /> */}
-        <SubmitScore2 />
+        <SubmitScore />
+        {/* <SubmitScore2 /> */}
         {/* <GradeTable /> */}
       </div>
     </div>
