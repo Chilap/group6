@@ -13,7 +13,7 @@ interface Grade {
   avgGPAandVoted: [averageGPA: number, voted: number];
 }
 
-const COMdetail: Grade[] = require("./grades.json");
+var COMdetail: Grade[] = require("./grades.json");
 
 var data
 
@@ -27,8 +27,8 @@ const initiate = () => {
       [element.avgGPAandVoted[0], element.avgGPAandVoted[1]].toString()
     );
   });
-  data = localStorage.getItem("grades") 
-  
+  data = localStorage.getItem("grades")
+
   // return localStorage.getItem("grades");
 };
 
@@ -55,6 +55,7 @@ const save = (course: string, gpa) => {
   });
   console.log(JSON.stringify(grades));
   localStorage.setItem("grades", JSON.stringify(grades));
+
 };
 
 // -------------------------------------------------
@@ -84,6 +85,7 @@ const Item: React.FC<{ item: Grade }> = ({ item }) => {
 const SubmitScore = () => {
   const [input, setInput] = useState<Item>({ Programme_code: "", gpa: "" });
   const [initiated, setInitiated] = useState<boolean>(false);
+  const [details, setDetials] = useState<Grade[]>([...COMdetail]);
   return (
     <div>
       <button className="border p-2 border-black" onClick={() => initiate()}>
@@ -117,8 +119,17 @@ const SubmitScore = () => {
           />
           <br />
           <button
-            onClick={() => {
+            onClick={(e) => {
+              // e.preventDefault();
               save(input.Programme_code, input.gpa);
+              COMdetail.forEach((element) => {
+                if (input.Programme_code == element.Programme_code){
+                  element.avgGPAandVoted[0] = Number(localStorage.getItem(element.Programme_code)[0])
+                  element.avgGPAandVoted[1] ++;
+                }
+              })
+              setDetials([...COMdetail])
+              
             }}
             className="bg-blue-200 mx-2 text-gray-600 inline-block rounded-md px-4 py-2 text-sm my-2 hover:bg-blue-300 hover:text-black hover:shadow-xl transition duration-200"
           >
@@ -132,7 +143,7 @@ const SubmitScore = () => {
               <th className={styles.th}>Vote Count</th>
             </tr>
             {/* Content */}
-            {COMdetail.map((item) => (
+            {details.map((item) => (
               <Item key={item.Programme_code} item={item} />
             ))}
           </table>
